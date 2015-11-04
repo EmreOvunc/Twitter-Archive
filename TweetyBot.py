@@ -15,14 +15,14 @@ def Tweety():
          )
         for tweet in Twitter_Obj.search_tweets_iterable(Twitter_User):
             tweets=( '@%s : %s \n' % (tweet['user']['screen_name'], tweet['text']) )
-            if '#se302' in tweets:
+            if '#ieu' in tweets:
                 if CheckTweets(tweets[13:])== 1:                
                		break;
     except TwitterSearchException as error:
         print(error)
         
 def CheckTweets(Tweet):
-    Tweet=Tweet.replace("#se302 ","")
+    Tweet=Tweet.replace("#ieu ","")
     TweetFile= open("/home/debian/Desktop/Last_Tweet.txt", "r")
     LastTweet=TweetFile.read()
     if LastTweet.encode("utf-8").split() == Tweet.encode("utf-8").split():
