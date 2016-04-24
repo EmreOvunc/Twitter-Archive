@@ -15,14 +15,17 @@ def Tweety():
          )
         for tweet in Twitter_Obj.search_tweets_iterable(Twitter_User):
             tweets=( '@%s : %s \n' % (tweet['user']['screen_name'], tweet['text']) )
-            if '#ieu' in tweets:
+            
+            # You can use if statement for spesific tweets
+            # or skip this part to save all tweets
+            if '#TweetyBot' in tweets:
                 if CheckTweets(tweets[13:])== 1:                
                		break;
     except TwitterSearchException as error:
         print(error)
         
 def CheckTweets(Tweet):
-    Tweet=Tweet.replace("#ieu ","")
+   # Tweet=Tweet.replace("#TweetyBot ","")
     TweetFile= open("/home/debian/Desktop/Last_Tweet.txt", "r")
     LastTweet=TweetFile.read()
     if LastTweet.encode("utf-8").split() == Tweet.encode("utf-8").split():
